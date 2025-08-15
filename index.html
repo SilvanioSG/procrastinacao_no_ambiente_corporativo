@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Estudo: Procrastinação no Ambiente Corporativo</title>
+<style>
+  :root{
+    --primary:#27628d;
+    --ink:#1a1a1a;
+    --muted:#6b7280;
+    --bg:#f6f8fa;
+    --card:#ffffff;
+    --good:#16a34a;
+    --bad:#dc2626;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;}
+  .wrap{max-width:1100px;margin:0 auto;padding:24px;}
+  header{background:linear-gradient(180deg,var(--primary),#1f4b69);color:#fff;padding:18px 0;border-bottom:4px solid rgba(255,255,255,.15);}
+  header .top{max-width:1100px;margin:0 auto;padding:0 24px;font-size:14px;letter-spacing:.2px;}
+  header .top a{color:#cde6f7;text-decoration:none;}
+  h1{margin:20px 0 8px;font-size:28px;color:#fff;font-weight:700;}
+  .subtitle{color:#e8f3fb;margin-bottom:10px;}
+  .card{background:var(--card);border-radius:16px;padding:20px;box-shadow:0 6px 24px rgba(0,0,0,.06);margin:16px 0;}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px;}
+  .kpi{background:#fff;border:1px solid #eef2f7;border-radius:14px;padding:14px;text-align:center;}
+  .kpi .label{font-size:12px;color:var(--muted);}
+  .kpi .value{font-size:20px;font-weight:800;margin-top:4px;}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:12px;overflow-x:auto;display:block;}
+  th,td{padding:10px 12px;border-bottom:1px solid #eef2f7;white-space:nowrap;}
+  th{background:#f0f6fb;color:#0f2f45;text-align:left;}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;background:#eef6ff;color:#0f2f45;}
+  .note{font-size:13px;color:var(--muted);}
+  .callout{border-left:6px solid var(--primary);background:#f0f6fb;padding:12px 14px;border-radius:10px;font-size:14px;margin-bottom:16px;}
+  .legend{display:flex;gap:10px;align-items:center;font-size:12px;color:#334155;margin:8px 0 0;flex-wrap:wrap;}
+  .dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
+  .dot.p{background:var(--bad);}
+  .dot.s{background:var(--good);}
+  .bar-container{position:relative;margin:16px 0;transition:all .2s ease;}
+  .bar-label{font-size:14px;margin-bottom:4px;}
+  .bar{height:28px;border-radius:14px;position:relative;overflow:hidden;background:#e5e7eb;cursor:pointer;box-shadow:inset 0 1px 3px rgba(0,0,0,.1);transition:all .2s ease;}
+  .bar-fill{
+    height:100%;
+    border-radius:14px;
+    position:absolute;left:0;top:0;width:0;
+    background:linear-gradient(90deg, var(--bad) 0%, #fca5a5 100%);
+    transition: width 1.2s ease-out;
+  }
+  .bar-fill.good{background:linear-gradient(90deg, var(--good) 0%, #86efac 100%);}
+  .bar-fill span{position:absolute;right:8px;top:2px;font-size:12px;color:#fff;font-weight:700;}
+  .bar-container:hover .bar{
+    transform:scaleY(1.15);
+    box-shadow:inset 0 2px 6px rgba(0,0,0,.2),0 4px 12px rgba(0,0,0,.08);
+  }
+  footer{margin-top:28px;padding:18px 24px;background:#0f2f45;color:#cde6f7;font-size:14px;text-align:center;}
+  footer a{color:#ffffff;text-decoration:none;border-bottom:1px dotted #fff;}
+
+  /* RESPONSIVO */
+  @media(max-width:900px){
+    .kpis{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:600px){
+    .kpis{grid-template-columns:1fr;}
+    .wrap{padding:12px;}
+    h1{font-size:22px;}
+    .subtitle{font-size:14px;}
+  }
+  @media(max-width:480px){
+    table{font-size:12px;}
+    th,td{padding:6px 8px;}
+    .bar{height:20px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div><strong>Silvanio Gois — Técnico em Administração e Edificações</strong> | Graduando em Processos Gerenciais | 
+      <a href="mailto:sg@silvaniogois.com.br">sg@silvaniogois.com.br</a> | 
+      <a href="https://www.silvaniogois.com.br" target="_blank" rel="noopener">www.silvaniogois.com.br</a>
+    </div>
+    <h1>Estudo: Procrastinação no Ambiente Corporativo</h1>
+    <div class="subtitle">Diagnóstico direto, dados claros e plano de ataque para gestores.</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="card" style="background:#e3f2fb;border-radius:16px;display:flex;align-items:flex-start;gap:12px;padding:18px;">
+    <div style="font-size:24px;line-height:1.2;">⚠️</div>
+    <div>
+      <h2 style="margin-top:0;color:#0f2f45;">Por que isso importa</h2>
+      <p style="margin:0;font-size:14px;line-height:1.6;color:#0f2f45;">
+        <strong>Procrastinação não é preguiça</strong> — é sintoma de processos falhos, prioridades confusas e gestão permissiva. O resultado? Atrasos, retrabalho e dinheiro escorrendo pelo ralo. Aqui, apresento indicadores e comparativos (cenário com vs sem procrastinação) para você, gestor, detectar e resolver antes que o prejuízo vire cultura.
+      </p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Indicadores principais</h2>
+    <div class="kpis">
+      <div class="kpi"><div class="label">Horas produtivas/semana por colaborador</div><div class="value">28h → 36h</div></div>
+      <div class="kpi"><div class="label">Tarefas entregues no prazo</div><div class="value">65% → 92%</div></div>
+      <div class="kpi"><div class="label">Custo anual com retrabalho</div><div class="value">R$120k → R$40k</div></div>
+      <div class="kpi"><div class="label">Satisfação interna (0–10)</div><div class="value">6,2 → 8,7</div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Impacto financeiro estimado</h2>
+    <p>≈ R$ 496.000/ano</p>
+    <div class="callout">Recado direto ao gestor: se você não mede, você permite. Procrastinação vira hábito quando ninguém é cobrado pelo custo do atraso. Defina metas semanais, exponha gargalos e cobre decisões em prazos curtos. Sem isso, o time desaprende a performar.</div>
+  </section>
+
+  <section class="card">
+    <h2>Plano de ação em 30 dias</h2>
+    <ul>
+      <li><strong>Semana 1 — Diagnóstico:</strong> inventário de projetos, definição de “pronto/aceite”, medição de lead time e % no prazo.</li>
+      <li><strong>Semana 2 — Foco e fluxo:</strong> WIP limitado, Kanban visível, reuniões de 15min, “tempo de foco” do time bloqueado.</li>
+      <li><strong>Semana 3 — Padrões:</strong> checklists simples, revisões rápidas, priorização por impacto (RICE) e due dates realistas.</li>
+      <li><strong>Semana 4 — Cobrança boa:</strong> ritos semanais com indicadores, remoção ativa de impedimentos e feedback 1:1.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Causas comuns & como detectar rápido</h2>
+    <ul>
+      <li><strong>Prioridade nebulosa:</strong> backlog vira “sacolão”. Sinal: trocas de tarefa a cada interrupção.</li>
+      <li><strong>Medo de errar:</strong> perfeccionismo sem critério. Sinal: tarefas eternas “em revisão”.</li>
+      <li><strong>Decisão travada:</strong> gestor não decide. Sinal: dependências aguardando há dias.</li>
+      <li><strong>Reuniões demais:</strong> agenda sequestrada. Sinal: produção só fora do expediente.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Comparativos visuais (Com × Sem procrastinação)</h2>
+    <div class="legend">
+      <span class="dot p"></span> Com procrastinação
+      <span class="dot s"></span> Sem procrastinação
+    </div>
+    <div class="bar-container" data-value="28" data-max="36" data-color="var(--bad)"><div class="bar"><div class="bar-fill"><span>28h</span></div></div></div>
+    <div class="bar-container" data-value="36" data-max="36" data-color="var(--good)"><div class="bar"><div class="bar-fill"><span>36h</span></div></div></div>
+    <div class="bar-container" data-value="65" data-max="92" data-color="var(--bad)"><div class="bar"><div class="bar-fill"><span>65%</span></div></div></div>
+    <div class="bar-container" data-value="92" data-max="92" data-color="var(--good)"><div class="bar"><div class="bar-fill"><span>92%</span></div></div></div>
+    <div class="bar-container" data-value="120000" data-max="120000" data-color="var(--bad)"><div class="bar"><div class="bar-fill"><span>R$120k</span></div></div></div>
+    <div class="bar-container" data-value="40000" data-max="120000" data-color="var(--good)"><div class="bar"><div class="bar-fill"><span>R$40k</span></div></div></div>
+    <div class="bar-container" data-value="6.2" data-max="10" data-color="var(--bad)"><div class="bar"><div class="bar-fill"><span>6,2</span></div></div></div>
+    <div class="bar-container" data-value="8.7" data-max="10" data-color="var(--good)"><div class="bar"><div class="bar-fill"><span>8,7</span></div></div></div>
+  </section>
+
+  <section class="card">
+    <h2>Detalhamento de indicadores</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Indicador</th>
+          <th>Com procrastinação</th>
+          <th>Sem procrastinação</th>
+          <th>Variação</th>
+          <th>Observação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Horas produtivas/semana por colaborador</td>
+          <td>28h</td>
+          <td>36h</td>
+          <td><span class="pill">+8h (+28,6%)</span></td>
+          <td>Recupero de foco e bloqueio de interrupções.</td>
+        </tr>
+        <tr>
+          <td>Tarefas entregues no prazo</td>
+          <td>65%</td>
+          <td>92%</td>
+          <td><span class="pill">+27 p.p.</span></td>
+          <td>Clareza de prioridades e ritos de acompanhamento.</td>
+        </tr>
+        <tr>
+          <td>Custo anual com retrabalho</td>
+          <td>R$120.000</td>
+          <td>R$40.000</td>
+          <td><span class="pill">−R$80.000</span></td>
+          <td>Definição de pronto/aceite e revisão leve.</td>
+        </tr>
+        <tr>
+          <td>Satisfação da equipe (0–10)</td>
+          <td>6,2</td>
+          <td>8,7</td>
+          <td><span class="pill">+2,5</span></td>
+          <td>Autonomia + feedback rápido = engajamento.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">Métricas comparadas no horizonte de 12 meses.</p>
+  </section>
+
+</main>
+
+<footer>
+  © 2025 Silvanio Gois — Todos os direitos reservados | 
+  <a href="https://www.silvaniogois.com.br" target="_blank" rel="noopener">Retornar ao site</a>
+</footer>
+
+<script>
+document.querySelectorAll('.bar-container').forEach(function(container){
+  const fill = container.querySelector('.bar-fill');
+  const value = parseFloat(container.dataset.value);
+  const max = parseFloat(container.dataset.max);
+  const pct = (value/max)*100;
+  
+  if(container.dataset.color === "var(--good)"){ fill.classList.add('good'); }
+
+  let width = 0;
+  const step = pct / 50;
+  const interval = setInterval(()=>{
+    if(width >= pct){ fill.style.width = pct+'%'; clearInterval(interval); return; }
+    width += step;
+    fill.style.width = width+'%';
+  },24);
+});
+</script>
+</body>
+</html>
