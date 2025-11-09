@@ -18,7 +18,8 @@
   body{margin:0;font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;}
   .wrap{max-width:1100px;margin:0 auto;padding:24px;}
   header{background:linear-gradient(180deg,var(--primary),#1f4b69);color:#fff;padding:18px 0;border-bottom:4px solid rgba(255,255,255,.15);}
-  header .top{max-width:1100px;margin:0 auto;padding:0 24px;font-size:14px;letter-spacing:.2px;}
+  header .top{max-width:1100px;margin:0 auto;padding:0 24px;font-size:14px;letter-spacing:.2px;display:flex;gap:20px;align-items:center;justify-content:space-between;}
+  header .top .info{flex-grow:1;}
   header .top a{color:#cde6f7;text-decoration:none;}
   h1{margin:20px 0 8px;font-size:28px;color:#fff;font-weight:700;}
   .subtitle{color:#e8f3fb;margin-bottom:10px;}
@@ -53,14 +54,41 @@
     transform:scaleY(1.15);
     box-shadow:inset 0 2px 6px rgba(0,0,0,.2),0 4px 12px rgba(0,0,0,.08);
   }
+  .profile-pic{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,.15);
+    margin: 0 0 10px 0; /* Ajuste no mobile */
+  }
   footer{margin-top:28px;padding:18px 24px;background:#0f2f45;color:#cde6f7;font-size:14px;text-align:center;}
   footer a{color:#ffffff;text-decoration:none;border-bottom:1px dotted #fff;}
 
   /* RESPONSIVO */
-  @media(max-width:900px){
-    .kpis{grid-template-columns:repeat(2,1fr);}
+  @media(min-width:901px){ /* Desktop */
+    header .top{
+      align-items: flex-start;
+      padding: 0 24px 20px 24px; /* Aumenta o padding inferior */
+      flex-direction: row-reverse; /* Foto à direita, texto à esquerda */
+    }
+    .profile-pic{
+      width: 120px;
+      height: 120px;
+      margin-top: 5px;
+    }
+    h1{margin-top:0;font-size:32px;}
   }
-  @media(max-width:600px){
+
+  @media(max-width:900px){ /* Tablet */
+    .kpis{grid-template-columns:repeat(2,1fr);}
+    header .top{flex-direction: column; align-items: center;}
+    header .top .info{text-align: center;}
+    .profile-pic{margin-bottom: 12px;}
+    h1{margin-top: 10px;}
+  }
+  @media(max-width:600px){ /* Mobile */
     .kpis{grid-template-columns:1fr;}
     .wrap{padding:12px;}
     h1{font-size:22px;}
@@ -76,17 +104,20 @@
 <body>
 <header>
   <div class="top">
-    <div><strong>Silvanio Gois — Técnico em Administração e Edificações</strong> | Graduando em Processos Gerenciais | 
-      <a href="mailto:sg@silvaniogois.com.br">sg@silvaniogois.com.br</a> | 
-      <a href="https://www.silvaniogois.com.br" target="_blank" rel="noopener">www.silvaniogois.com.br</a>
+    <img src="Executivo_sg_projetos.PNG" alt="Silvanio Gois - Executivo de Projetos" class="profile-pic">
+    
+    <div class="info">
+      <div>
+        <strong>Silvanio Gois — Técnico em Administração e Edificações</strong> | Graduando em Processos Gerenciais | 
+        <a href="https://www.silvaniogois.com.br" target="_blank" rel="noopener">www.silvaniogois.com.br</a>
+      </div>
+      <h1>Estudo: Procrastinação no Ambiente Corporativo</h1>
+      <div class="subtitle">Diagnóstico direto, dados claros e plano de ataque para gestores.</div>
     </div>
-    <h1>Estudo: Procrastinação no Ambiente Corporativo</h1>
-    <div class="subtitle">Diagnóstico direto, dados claros e plano de ataque para gestores.</div>
   </div>
 </header>
 
 <main class="wrap">
-
   <section class="card" style="background:#e3f2fb;border-radius:16px;display:flex;align-items:flex-start;gap:12px;padding:18px;">
     <div style="font-size:24px;line-height:1.2;">⚠️</div>
     <div>
@@ -96,7 +127,6 @@
       </p>
     </div>
   </section>
-
   <section class="card">
     <h2>Indicadores principais</h2>
     <div class="kpis">
@@ -106,13 +136,11 @@
       <div class="kpi"><div class="label">Satisfação interna (0–10)</div><div class="value">6,2 → 8,7</div></div>
     </div>
   </section>
-
   <section class="card">
     <h2>Impacto financeiro estimado</h2>
     <p>≈ R$ 496.000/ano</p>
     <div class="callout">Recado direto ao gestor: se você não mede, você permite. Procrastinação vira hábito quando ninguém é cobrado pelo custo do atraso. Defina metas semanais, exponha gargalos e cobre decisões em prazos curtos. Sem isso, o time desaprende a performar.</div>
   </section>
-
   <section class="card">
     <h2>Plano de ação em 30 dias</h2>
     <ul>
@@ -122,7 +150,6 @@
       <li><strong>Semana 4 — Cobrança boa:</strong> ritos semanais com indicadores, remoção ativa de impedimentos e feedback 1:1.</li>
     </ul>
   </section>
-
   <section class="card">
     <h2>Causas comuns & como detectar rápido</h2>
     <ul>
@@ -132,7 +159,6 @@
       <li><strong>Reuniões demais:</strong> agenda sequestrada. Sinal: produção só fora do expediente.</li>
     </ul>
   </section>
-
   <section class="card">
     <h2>Comparativos visuais (Com × Sem procrastinação)</h2>
     <div class="legend">
@@ -148,7 +174,6 @@
     <div class="bar-container" data-value="6.2" data-max="10" data-color="var(--bad)"><div class="bar"><div class="bar-fill"><span>6,2</span></div></div></div>
     <div class="bar-container" data-value="8.7" data-max="10" data-color="var(--good)"><div class="bar"><div class="bar-fill"><span>8,7</span></div></div></div>
   </section>
-
   <section class="card">
     <h2>Detalhamento de indicadores</h2>
     <table>
@@ -194,22 +219,12 @@
     </table>
     <p class="note">Métricas comparadas no horizonte de 12 meses.</p>
   </section>
-
 </main>
-
 <footer>
   © 2025 Silvanio Gois — Todos os direitos reservados | 
   <a href="https://www.silvaniogois.com.br" target="_blank" rel="noopener">Retornar ao site</a>
 </footer>
-
-<script>
-document.querySelectorAll('.bar-container').forEach(function(container){
-  const fill = container.querySelector('.bar-fill');
-  const value = parseFloat(container.dataset.value);
-  const max = parseFloat(container.dataset.max);
-  const pct = (value/max)*100;
-  
-  if(container.dataset.color === "var(--good)"){ fill.classList.add('good'); }
+<script>document.querySelectorAll('.bar-container').forEach(function(container){  const fill = container.querySelector('.bar-fill');  const value = parseFloat(container.dataset.value);  const max = parseFloat(container.dataset.max);  const pct = (value/max)*100;    if(container.dataset.color === "var(--good)"){ fill.classList.add('good'); }
 
   let width = 0;
   const step = pct / 50;
@@ -217,8 +232,6 @@ document.querySelectorAll('.bar-container').forEach(function(container){
     if(width >= pct){ fill.style.width = pct+'%'; clearInterval(interval); return; }
     width += step;
     fill.style.width = width+'%';
-  },24);
-});
-</script>
+  },24);});</script>
 </body>
 </html>
